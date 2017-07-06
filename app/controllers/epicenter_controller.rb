@@ -42,6 +42,8 @@ class EpicenterController < ApplicationController
     @tweet.message = "#{params[:tweet][:message]}"
     @tweet.user_id = "#{params[:tweet][:user_id].to_i}"
 
+
+    #comes from the TweetsHelper
     @tweet = get_tagged(@tweet)
 
     @tweet.save
@@ -55,4 +57,9 @@ class EpicenterController < ApplicationController
   def all_users
   	@users = User.all
   end	
+
+  def tag_tweets
+    @tag = Tag.find(params[:id])
+  end
+
 end

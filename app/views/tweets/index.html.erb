@@ -2,8 +2,9 @@
 
 <h1>Tweets</h1>
 
-<% @tweets.each do |tweet| %>
-   <div class="well"> 
+<% @tweets.each.index_by do |tweet| %>
+   <div class="well">  
+
    <div class="media">
     <div class="media-left media-top">
     <%= image_tag tweet.user.avatar.thumb, class: "img-circle"%>

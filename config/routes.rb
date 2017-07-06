@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
 
    post 'epicenter/epi_tweet'
+
+  get 'tag_tweets' => 'epicenter#tag_tweets'
  
   get 'show_user' => 'epicenter#show_user'
 
