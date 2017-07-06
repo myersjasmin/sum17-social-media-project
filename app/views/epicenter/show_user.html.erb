@@ -1,0 +1,38 @@
+<h1>@<%= @user.username %>'s Profile & Tweets</h1>
+
+<center>
+	<p><%= image_tag @user.avatar.url, class: "img-circle show_user" %></p>
+	<p>Tweeter: <strong><%= @user.name %></strong></p>
+	<p>Location: <strong><%= @user.location %></strong></p>
+	<p>About: <strong><%= @user.bio %></strong></p>
+</center>
+
+
+
+<p>
+    <% if current_user.following.include?(@user.id) %>
+        <%= link_to "Unfollow", unfollow_path(id: @user.id), class: "btn btn-danger" %>
+    <% else %>
+        <% if current_user.id != @user.id %>
+	    <%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-primary" %>
+	    <% else %>
+
+				<%= form_for Tweet.new, url: {action: "epi_tweet"} do |f| %>
+				  <%= f.text_field :message, class: "form-control" %>
+				  <%= f.hidden_field :user_id, value: current_user.id %>
+				  <%= f.submit "New Tweet", class: "btn btn-primary" %>
+				<% end %>
+	<% end %>
+    <% end %>
+</p>
+
+<div class="well">
+	<% @user.tweets.each do |tweet| %>
+		<div class="well inner">
+	   
+	        <p>@<%= @user.username %></p>
+	        <p><em> Posted <%= time_ago_in_words(tweet.created_at) %> ago...</em></p>
+		<p><%= tweet.message %></p>
+	  </div>  
+	<% end %>
+</div>

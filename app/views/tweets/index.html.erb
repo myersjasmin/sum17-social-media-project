@@ -2,28 +2,22 @@
 
 <h1>Tweets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Message</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @tweets.each do |tweet| %>
+   <div class="well"> 
+   <div class="media">
+    <div class="media-left media-top">
+    <%= image_tag tweet.user.avatar.thumb, class: "img-circle"%>
+  </div>
 
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%= tweet.message %></td>
-        <td><%= tweet.user.username %><%= image_tag tweet.user.avatar.thumb %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+  <div class="media-body">
+    <h4 class="media-heading"><%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %> @<%= tweet.user.username %></h4>
+    <p> Posted <%= time_ago_in_words(tweet.created_at) %> ago...</p>
+    <p><%= tweet.message.html_safe %></p>
+    
+  </div>
+</div>
+</div>
+  
+<% end %>
 
 <%= link_to 'New Tweet', new_tweet_path %>

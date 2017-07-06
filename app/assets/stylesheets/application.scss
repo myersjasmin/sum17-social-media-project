@@ -17,3 +17,49 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+
+
+.fa-2x, .nav {
+    font-size: 15px;
+    font-family: FontAwesome;
+}
+
+ul {
+	list-style: none;
+}
+
+.show_user {
+	width: 200px;
+	height: 200px;
+
+}
+
+.thumb {
+	width: 25px;
+	height: 25px;
+
+
+}
+
+body {
+	background: gray;
+}
+
+.inner {
+	background: white;
+}
+h1 {
+	text-align: center;
+}
+
+.profiles {
+	height: 400px;
+	width: 350px;
+
+}
+
+
+.login {
+	min-height: 400px;
+}
